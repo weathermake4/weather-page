@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="240"> <!-- Auto-refresh every 4 minutes -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 185%; /* 85% larger than default */
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    #weather {
+      max-width: 90vw;
+    }
+  </style>
+</head>
+<body>
+  <div id="weather">Loading weather...</div>
+
+  <script>
+    async function fetchWeather() {
+      try {
+        const response = await fetch("https://wttr.in/?format=%l:+%c+%t+%w+%h+%p");
+        const weather = await response.text();
+        document.getElementById("weather").textContent = weather;
+      } catch (e) {
+        document.getElementById("weather").textContent = "Failed to load weather.";
+      }
+    }
+
+    fetchWeather();
+
+    // Fake click every 4.5 minutes (270,000 ms)
+    setInterval(() => {
+      const clickEvent = new MouseEvent("click", { bubbles: true });
+      document.body.dispatchEvent(clickEvent);
+    }, 270000);
+  </script>
+</body>
+</html>
