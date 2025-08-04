@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Plain City Weather Auto Refresh (10 min)</title>
+  <meta http-equiv="refresh" content="600" />
+  <style>
+    body, html {
+      margin: 0; 
+      padding: 1em; 
+      height: 100%;
+      font-family: Verdana, Arial, sans-serif;
+      font-size: 20px;
+      background: white;
+      color: black;
+      overflow: hidden;
+      line-height: 1.5;
+    }
+    iframe {
+      border: none;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="https://wttr.in/43064?format=%l:+%c+%t%0AHumidity:+%h%0AWind:+%w%0APrecipitation:+%p%0ACondition:+%C%0ASunrise:+%S%0ASunset:+%s&u" title="Weather"></iframe>
+</body>
+</html>
