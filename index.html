@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="240"> <!-- Auto-refresh every 4 minutes -->
+  <title>Status Page</title>
+  <style>
+    body {
+      font-size: 37px; /* Large text for Kindle */
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+      background-color: white;
+      color: black;
+    }
+    #keepalive {
+      margin-top: 30px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>Status: Everything is running fine.</p>
+    <p>Last updated: <span id="timestamp"></span></p>
+  </div>
+
+  <div id="keepalive">Touching screen to prevent sleep...</div>
+
+  <script>
+    // Set current time for timestamp display
+    document.getElementById("timestamp").textContent = new Date().toLocaleTimeString();
+
+    // Fake click every 4.5 minutes
+    function fakeClick() {
+      const evt = new MouseEvent("click", {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      });
+      document.getElementById("keepalive").dispatchEvent(evt);
+    }
+
+    setInterval(fakeClick, 270000); // 4.5 minutes
+  </script>
+</body>
+</html>
